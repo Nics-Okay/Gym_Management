@@ -1,0 +1,99 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.indexMain {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: aqua;
+}
+
+.indexContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: auto;
+    background-color: #021024;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.indexContent img{
+    margin-top: 30px;
+    height: 200px;
+    width: 200px;
+    
+}
+
+.indexContent h1 {
+    color: white;
+    margin: 5px 0 0;
+    padding: 0;
+
+}
+
+.indexContent p {
+    color: white;
+    font-size: 12px;
+
+}
+
+.indexContent a{
+    text-align: center;
+    align-content: center;
+    text-decoration: none;
+    font-size: 12px;
+    height: 35px;
+    width: 160px;
+    color: white;
+    margin-top: 60px;
+    border-radius: 20px;
+    background-color: #511FCB;
+    
+}
+
+#logMain {
+    height: 100vh;
+    width: 100vw;
+}
+
+.logMain img {
+    height: 100%;
+    width: 100%;
+}
+
+.logContent {
+    height: 80%;
+    width: 50%;
+    background-color: rebeccapurple;
+}
+
+@media screen and (min-width: 768px) {
+    .indexMain {
+        background-image: url('tempPics/image.jpg');
+    }
+
+    .indexContent img {
+        margin-top: 0;
+        height: 300px;
+        width: 300px;
+    }
+
+    .indexContent h1 {
+        font-size: 36px;
+    }
+
+    .indexContent p {
+        font-size: 16px;
+    }
+
+    .indexContent a {
+        font-size: 16px;
+        height: 50px;
+        width: 200px;
+    }
+}

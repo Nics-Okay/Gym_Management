@@ -1,0 +1,45 @@
+Route::get('/profile', [PageController::class, 'profile'])->name('page.profile');
+Route::get('/clients', [PageController::class, 'clientsInformation'])->name('page.clients');
+Route::get('/members/status', [PageController::class, 'membersStatus'])->name('page.status');
+Route::get('/members/tracker', [PageController::class, 'membersTracker'])->name('page.tracker');
+Route::get('/guest/tracker', [PageController::class, 'guestTracker'])->name('page.guest');
+Route::get('/rates', [PageController::class, 'rates'])->name('page.rates');
+Route::get('/transactions/history', [PageController::class, 'transactionsHistory'])->name('page.transactions');
+Route::get('/transactions/pending', [PageController::class, 'transactionsPending'])->name('page.pending');
+Route::get('/revenue/monthly', [PageController::class, 'revenueMonthly'])->name('page.revenue');
+
+public function profile(){
+  return view('profile');
+}
+
+public function clientsInformation(){
+  return view('clients');
+}
+
+public function membersStatus(){
+  return view('status');
+}
+
+public function membersTracker(){
+  return view('tracker');
+}
+
+public function guestTracker(){
+  return view('guest');
+}
+
+public function rates(){
+  return view('rates');
+}
+
+public function transactionsHistory(){
+  return view('transactions');
+}
+
+public function transactionsPending(){
+  return view('pending');
+}
+
+public function revenueMonthly(){
+  return view('revenue');
+}

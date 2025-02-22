@@ -1,0 +1,177 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.guestContainer {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #021024;
+}
+
+.guestSlot {
+    height: 60%;
+    width: 100%;
+    max-width: 448px; /* sm:max-w-md (28rem = 28 × 16px) */
+    margin-top: 24px; /* mt-6 (1.5rem = 1.5 × 16px) */
+    padding: 16px 24px; /* px-6 and py-4 (1rem = 16px, 1.5rem = 24px) */
+    background-color: #B0A6A7; /* bg-white */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    overflow: hidden; /* overflow-hidden */
+    border-radius: 20px; /* sm:rounded-lg (0.5rem = 8px) */
+}
+
+@media (max-width: 639px) {
+    .guestSlot {
+        height: 50%;
+        max-width: 85vw; /* sm:max-w-md */
+        border-radius: 8px; /* sm:rounded-lg */
+        padding: 16px 10px;
+    }
+}
+
+#loginTitle {
+    font-size: 25px;
+    color: white;
+    justify-self: center;
+    margin: 30px 0;
+}
+
+@media (max-width: 639px) {
+    #loginTitle {
+        margin: 10px 0;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 639px) {
+    #email, #password {
+        height: 35px;
+        margin-top: 2px;
+        font-size: 14px;
+    }
+}
+
+.guestLogin {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 639px) {
+    .guestLogin {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 639px) {
+    #mainButton {
+        font-size: 11px;
+        padding: 5px 30px;
+
+    }
+}
+
+@media (max-width: 639px) {
+    #guestPass, #guestRemember {
+        margin-top: 8px;
+    }
+}
+
+.guestHelp {
+    margin-bottom: 20px;
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    width: 80vw;
+    bottom: 0;
+}
+
+.guestHelp p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+.guestHelp a {
+    font-size: 14px;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#guestHelpRef {
+    text-decoration: none;
+}
+
+.guestHelp a:hover {
+    color: rgb(173, 255, 255);
+    text-decoration-color: rgb(173, 255, 255);
+}
+
+@media (max-width: 639px) {
+    .guestHelp a, .guestHelp p {
+        font-size: 12px;
+    }
+}
+
+/* Register Area */
+#registerTitle {
+    font-size: 25px;
+    color: white;
+    justify-self: center;
+    margin: 10px 0;
+}
+
+@media (max-width: 639px) {
+    #registerTitle {
+        padding: 0;
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 639px) {
+    #registerInputName, #registerInputEmail, #registerInputPassword, #registerInputPassword_confirmation {
+        height: 32px;
+        margin: 0;
+        font-size: 14px;
+    }
+}
+
+#registerEmail, #registerPassword, #registerConfirm {
+    margin-top: 4px;
+}
+
+@media (max-width: 639px) {
+    #registerEmail, #registerPassword, #registerConfirm {
+        margin-top: 4px;
+    }
+}
+
+.guestRegister {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 639px) {
+    .guestRegister {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

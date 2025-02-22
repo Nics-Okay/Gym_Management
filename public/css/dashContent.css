@@ -1,0 +1,215 @@
+.main-content {
+    height: 100vh;
+    width: calc(100% - 200px);
+    display: flex;
+    flex-direction: column;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 2px 20px 6px 5px;
+    height: 5vh;
+    box-shadow: 0 20px 25px 5px rgba(148, 148, 148, 0.4);
+}
+
+.headers {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.headers img {
+    height: 25px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.headers ion-icon {
+    font-size: 15px;
+    color: #838383;
+  }
+
+.page-layout {
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-info {
+    background-color: transparent;
+}
+
+.page-info h2 {
+    margin: 0;
+    padding: 15px 10px;
+    font-weight: 500;
+}
+
+.page-menus {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 100%;
+    gap: 10px;
+}
+
+.menu-link {
+    height: 40%;
+    width: 250px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: flex;
+    /*
+    flex-direction: row;
+    flex-wrap: wrap; */
+    /*
+    background-color: crimson; */
+    border: 1px solid gray;
+    box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s;  
+    cursor: pointer;
+    border-left: 5px solid rgb(44, 138, 107);
+}
+
+#ml-deals, #ml-clients, #ml-transactions {
+    /*
+    background-color: firebrick; */
+    display: block;
+}
+
+.page-menu {
+    height: 100%;
+    width: 60%;
+    border-radius: 10px 0 0 10px;
+}
+
+#pm-deals, #pm-clients, #pm-transactions {
+    /*
+    background-color: goldenrod; */
+    height: 40%;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.menu-link:hover {
+    background-color: #c9c9c9;
+}
+
+/* Here's the settings for info-menu title */
+.menu-title {
+    box-sizing: border-box;
+    height: 40%;
+    width: 100%;
+    font-size: 10px;
+    border-radius: 10px 0 0 0;
+    color: forestgreen;
+    padding: 15px 0 0 10px;
+    transition: 0.3s;
+    /*
+    background-color: darkviolet; */
+}
+
+.menu-link:hover .menu-title {
+    color: #0056B3;
+    font-size: 11px;
+}
+
+#mt-deals, #mt-clients, #mt-transactions {
+    height: 100%;
+    box-sizing: border-box;
+    align-content: center;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    padding: 20px 0 0;
+    border-radius: 10px 10px 0 0;
+    /*
+    background-color: cadetblue; */
+
+}
+
+.menu-info {
+    box-sizing: border-box;
+    height: 60%;
+    width: 100%;
+    color: black;
+    border-radius: 0px 0px 0px 10px;
+    padding: 0 0 0 10px;
+    font-size: 25px;
+    /*
+    background-color: darkblue; */
+}
+
+.page-icon {
+    height: 100%;
+    width: 40%;
+    border-radius: 0px 10px 10px 0px;
+    /* 
+    background-color: black; */
+}
+
+#pi-deals, #pi-clients, #pi-transactions {
+    /*
+    background-color: coral; */
+    height: 60%;
+    width: 100%;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.menu-icon {
+    height: 100%;
+    width: 100%;
+    border-radius: 0px 10px 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*
+    background-color: aquamarine; */
+}
+
+#mi-deals, #mi-clients, #mi-transactions {
+    box-sizing: border-box;
+    padding: 5px 0 0;
+    border-radius: 0px 0 10px 10px;
+    align-items: flex-start;
+}
+
+.menu-icon ion-icon {
+    font-size: 30px;
+    color: rgb(48, 47, 47);
+}
+
+#mi-deals ion-icon, #mi-clients ion-icon, #mi-transactions ion-icon {
+    font-size: 25px;
+}
+
+.page-content {
+    background-color: #f1f2f4ff;
+    background-color: aquamarine;
+    height: calc(90vh - 250px);
+    width: calc(100vw - 200px);
+}
+
+.menu-heading::before {
+    content: "";
+    position: absolute;
+    top: -15px; /* Position at the top of the heading */
+    left: 10%; /* Center the border by leaving 10% space on both sides */
+    width: 80%; /* Make the border 80% of the menu's width */
+    height: 1px; /* Thickness of the border */
+    background-color: #333; /* Color of the border */
+}
+
+#page-title::before {
+    content: "";
+    position: absolute;
+    top: -17px; /* Position at the top of the heading */
+    left: 10%; /* Center the border by leaving 10% space on both sides */
+    width: 80%; /* Make the border 80% of the menu's width */
+    height: 1px; /* Thickness of the border */
+    background-color: #333; /* Color of the border */
+}
