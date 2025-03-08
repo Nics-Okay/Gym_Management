@@ -11,11 +11,16 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <div class="main-content">
+    <div class="main-page">
+        <!-- HEADER -->
         @include('partials.customerHeader')
-        <div class="home-content">
+
+        <div class="main-content">
+            <!-- HEADER -->
             @yield('customerContent')
         </div>
+
+        <!-- HEADER -->
         @include('partials.customerNavigation')
     </div>
     <script src="{{ asset('js//customerJS/homepageScript.js') }}"></script> 

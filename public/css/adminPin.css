@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.pin-main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('/tempPics/bg-colors.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
+}
+
+.pin-img img {
+    height: 200px;
+    aspect-ratio: 1/1;
+    margin-top: 70px;
+}
+
+.pin-content {
+    box-sizing: border-box;
+    justify-items: center;
+    align-content: center;
+    height: fit-content;
+    width: 30%;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid rgb(129, 129, 129, 0.7);
+    background-color: white;
+}
+
+.pin-content h1 {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 639px) {
+    .pin-content {
+        height: 15%;
+        width: 80%;
+    }
+
+    .pin-content h1 {
+        font-size: 22px;
+    }
+
+    .pin-content form {
+        display: flex;
+    }
+
+    .pin-content input {
+        width: 50%;
+    }
+}
+
+.back {
+    position: absolute;
+    top: 0;
+    height: 11%;
+    width: 100%;
+}
+
+.back-icon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 5%;
+}
+
+@media (max-width: 639px) {
+    .back-icon {
+        width: 15%;
+    }
+}
+
+.back-icon ion-icon {
+    color: white;
+    font-size: 30px;
+}

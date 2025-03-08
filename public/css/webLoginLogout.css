@@ -1,0 +1,286 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}   
+
+.guestContainer {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*
+    background: linear-gradient(165deg, #000000 0%, #000000 30%, #00008B 100%);  */
+    background-image: url('/tempPics/bg-colors.jpg ');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
+}
+
+.session-status {
+    font-weight: 500;              /* Equivalent to font-medium */
+    font-size: 14px;               /* Equivalent to text-sm */
+    color: #16a34a;                /* Equivalent to text-green-600 */
+    margin-bottom: 16px;           /* Equivalent to mb-4 */
+    padding: 10px 20px;            /* Add padding for better appearance */
+    border: 1px solid #16a34a;     /* Optional: border matching text color */
+    border-radius: 8px;            /* Rounded corners */
+    background-color: #f0fdf4;     /* Light green background for contrast */
+    display: block;                /* Ensure it's visible */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+
+.guestSlot {
+    height: 60%;
+    width: 100%;
+    max-width: 448px;
+    margin-top: 24px;
+    padding: 16px 24px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden; 
+    border-radius: 20px;
+    border: 2px solid rgb(255, 255, 255, 0.4);
+}
+
+#loginTitle {
+    font-size: 25px;
+    color: white;
+    justify-self: center;
+    margin: 30px 0;
+}
+
+.error {
+    text-align: center;
+    color: white;
+    background-color: rgb(255, 0, 0);
+    height: 20px;
+    font-size: 14px;
+}
+
+.login-email label,
+.login-pass label,
+.register-name label,
+.register-email label,
+.register-password label,
+.register-password-confirm label,
+.confirm-password-password label,
+.forgot-password-email label,
+.reset-password-email label,
+.reset-password-password label,
+.reset-password-confirm label {
+    display: block;             /* Makes the element a block element */
+    font-weight: 500;           /* font-medium: Medium font weight */
+    font-size: 14px;            /* text-sm: Small text size (14px typically in Tailwind) */
+    color: #ffffff;             /* text-white: White text color */
+}
+
+.login-email input,
+.login-pass input,
+.register-name input,
+.register-email input,
+.register-password input,
+.register-password-confirm input,
+.confirm-password-password input,
+.forgot-password-email input,
+.reset-password-email input,
+.reset-password-password input,
+.reset-password-confirm input {
+    display: block;
+    margin-top: 4px;       /* equivalent to mt-1 */
+    width: 100%;           /* w-full */
+    border: 1px solid #d1d5db;  /* border-gray-300 */
+    border-radius: 6px;         /* rounded-md */
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); /* shadow-sm */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-email input:focus,
+.login-pass input:focus,
+.register-name input:focus,
+.register-email input:focus,
+.register-password input:focus,
+.register-password-confirm input:focus,
+.confirm-password-password input:focus,
+.forgot-password-email input:focus,
+.reset-password-email input:focus,
+.reset-password-password input:focus,
+.reset-password-confirm input:focus {
+    border-color: #6366f1;  /* focus:border-indigo-500 */
+    box-shadow: 0px 0px 0px 2px rgba(99, 102, 241, 0.5);  /* focus:ring-indigo-500 */
+    outline: none;
+}
+
+.login-pass, .register-email, .register-password, .register-password-confirm {
+    margin-top: 16px;
+}
+
+.login-pass ul {
+    margin-top: 32px;
+}
+
+/* Styles for error messages */
+
+.login-remember {
+    display: block;
+    margin-top: 16px;
+}
+
+.login-remember label {
+    display: inline-flex;       /* Combines inline display with flex behavior */
+    align-items: center;        /* Centers items vertically */
+}
+
+.login-remember span {
+    margin-left: 8px;          /* ms-2: Adds 8px of left margin */
+    font-size: 14px;           /* text-sm: Small text size */
+    color: #FFFFFF;            /* text-white: White text color */
+}
+
+/* CSS styles for the class */
+.login-remember input {
+    border-radius: 2px;         /* rounded: Slightly rounded corners */
+    border: 1px solid #D1D5DB;  /* border-gray-300: Light gray border */
+    color: #4F46E5;             /* text-indigo-600: Indigo text color */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); /* shadow-sm: Small shadow */
+    transition: box-shadow 0.2s, outline 0.2s;   /* Smooth focus effect */
+}
+  
+.login-remember input:focus {
+    outline: none;              /* Removes default browser focus */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5); /* focus:ring-indigo-500: Indigo focus ring */
+}  
+
+.guestLogin, .guestRegister, .guestVerify {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.guestConfirm {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.guestForgot, .guestReset {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Primary button styles */
+.primary-button {
+    padding: 10px 48px;           /* px-12 = 48px, py-2.5 = 10px */
+    background-color: #ffffff;   /* White background */
+    border: 1px solid transparent; /* Transparent border */
+    border-radius: 20px;         /* Rounded corners */
+    font-weight: bold;           /* Bold text */
+    font-size: 12px;             /* text-xs = 12px */
+    text-transform: uppercase;   /* Uppercase text */
+    letter-spacing: 0.05em;      /* Slight spacing for tracking-widest */
+    color: #000000;              /* Black text color */
+    transition: all 0.15s ease-in-out; /* Smooth transition for hover effects */
+}
+  
+/* Hover and focus styles */
+.primary-button:hover {
+    background-color: #4b5563;   /* bg-gray-700 */
+}
+  
+.primary-button:focus {
+    background-color: #4b5563;   /* Same as hover */
+    outline: none;               /* Remove default outline */
+    box-shadow: 0 0 0 2px #6366f1; /* focus:ring-indigo-500 */
+}
+  
+.primary-button:active {
+    background-color: #1f2937;   /* bg-gray-900 */
+}
+  
+
+.guestHelp {
+    margin-bottom: 20px;
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    width: 80vw;
+    bottom: 0;
+}
+
+.guestHelp p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+.guestHelp a {
+    font-size: 14px;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#guestHelpRef {
+    text-decoration: none;
+}
+
+.guestHelp a:hover {
+    color: rgb(173, 255, 255);
+    text-decoration-color: rgb(173, 255, 255);
+}
+
+#registerTitle {
+    font-size: 25px;
+    color: white;
+    justify-self: center;
+    margin: 10px 0;
+}
+
+.register-email, .register-password, .register-password-confirm {
+    margin-top: 4px;
+}
+
+.confirm-password, .forgot-description {
+    padding: 0 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #4B5563; /* A medium-dark gray */
+}
+
+.verify-sent {
+    margin-bottom: 16px;      /* mb-4: Adds 16px of margin below the element */
+    font-weight: 500;         /* font-medium: Sets medium font weight */
+    font-size: 14px;          /* text-sm: Small text size */
+    color: #16A34A;           /* text-green-600: A medium green shade */
+}
+
+.verify-resend {
+    margin-top: 16px;          /* mt-4: Adds 16px of margin above the element */
+    display: flex;             /* flex: Enables flexbox layout */
+    align-items: center;       /* items-center: Centers items along the cross-axis (vertically) */
+    justify-content: space-between; /* justify-between: Spaces items evenly, with one at each end */
+}
+
+.verify-logout {
+    text-decoration: underline;       /* underline: Adds an underline to the text */
+    font-size: 14px;                  /* text-sm: Small font size */
+    color: #4B5563;                   /* text-gray-600: Medium gray color */
+    border-radius: 4px;               /* rounded-md: Medium border radius (4px) */
+    outline: none;                    /* focus:outline-none: Removes default focus outline */
+    transition: color 0.2s, box-shadow 0.2s; /* Smooth transition for hover and focus effects */
+}
+
+.verify-logout:hover {
+    color: #111827;                   /* hover:text-gray-900: Dark gray color on hover */
+}
+
+.verify-logout:focus {
+    box-shadow: 0 0 0 2px #6366F1;    /* focus:ring-2: Adds a 2px focus ring */
+    outline-offset: 2px;              /* focus:ring-offset-2: Adds spacing between ring and element */
+}

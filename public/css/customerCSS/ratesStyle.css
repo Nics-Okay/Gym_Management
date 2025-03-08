@@ -1,0 +1,132 @@
+.membership-rates-main {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 93%;
+    width: 100%;
+    padding: 10px 10px 0;
+}
+
+.ratesInfo-1 {
+    box-sizing: border-box;
+    height: 15%;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.ratesInfo-1 h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+#validity {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+#avail {
+    font-size: 18px;
+    color: white;
+}
+
+.product-list {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 0;
+    overflow: scroll;
+}
+
+.product-list::-webkit-scrollbar {
+    display: none;
+}
+
+.product-list a {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    height: fit-content;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.rates-data h3, .rates-data p {
+    margin: 0 0;
+    padding: 2px 0;
+    color: black;
+}
+
+/*
+
+
+AVAIL MEMBERSHIP SECTION
+
+
+*/
+
+.avail-membership {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 93%;
+    width: 100%;
+}
+
+.avail-membership-confirmation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    width: 80%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.avail-membership-confirmation h2 {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.avail-membership-review {
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+#review {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.avail-membership-review h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.avail-membership-review p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+#provide-required {
+    font-size: 18px;
+    margin-bottom: 10px;
+}

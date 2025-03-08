@@ -1,0 +1,191 @@
+@extends('layouts/dashboardLayout')
+
+@section('head-access')
+    <link rel="stylesheet" href="{{ asset('css/modulesCSS/qrScannerStyle.css') }}">
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+@endsection
+
+@section('content')
+    <div class="scanner-main">
+        <div id="clock" style="font-size: 20px; font-weight: bold;"></div>
+        <div id="date" style="font-size: 16px; font-weight: normal;"></div>
+
+        {{--
+
+        <h1>QR Scanner</h1>
+        
+        @if(session('success'))
+            <p style="color: green;">{{ session('success') }}</p>
+        @endif
+        @if(session('error'))
+            <p style="color: red;">{{ session('error') }}</p>
+        @endif
+
+        <form action="{{ route('scan.store') }}" method="POST">
+            @csrf
+            <label for="qr_code_id">Scan QR Code:</label>
+            <input type="text" id="qr_code_id" name="qr_code_id" required>
+            <input type="hidden" id="time_in" name="time_in">
+            <button type="submit">Submit</button>
+        </form>
+
+        --}}
+   
+            <div id="reader" style="width: 300px; background-color: blue;"></div>
+            <script>
+                function onScanSuccess(decodedText, decodedResult) {
+                    // Automatically submit the scanned QR code
+                    document.getElementById('qr_code_input').value = decodedText;
+                    document.getElementById('qr_code_form').submit();
+                }
+
+                const html5QrCode = new Html5Qrcode("reader");
+                html5QrCode.start(
+                    { facingMode: "environment" }, // Use back camera
+                    { fps: 10, qrbox: { width: 250, height: 250 } },
+                    onScanSuccess
+                );
+            </script>
+
+            <!-- Form for auto-submission -->
+            <form id="qr_code_form" action="{{ route('scan.store') }}" method="POST">
+                @csrf
+                <input type="hidden" id="qr_code_input" name="qr_code_id">
+            </form>
+
+        {{--
+
+        <h2>Scanned Data</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Membership Status</th>
+                    <th>Membership Validity</th>
+                    <th>Access Type</th>
+                    <th>Time In</th>
+                    <th>Time Out</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($scans as $scan)
+                <tr style="{{ now()->greaterThan($scan->membership_validity) || $scan->access_type !== 'Allowed' ? 'color:rgb(196, 0, 0);' : '' }}">
+                        <td>{{ $scan->id }}</td>
+                        <td>{{ $scan->name }}</td>
+                        <td>{{ $scan->membership_status }}</td>
+                        <td>{{ $scan->membership_validity }}</td>
+                        <td>{{ $scan->access_type }}</td>
+                        <td>{{ $scan->time_in }}</td>
+                        <td>{{ $scan->time_out }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    --}}
+@endsection
+
+{{--
+        <h1>Enable Camera</h1>
+        <video id="camera" autoplay></video>
+        <div class="controls">
+            <button id="capture">Capture</button>
+            <canvas id="snapshot" style="display: none;"></canvas>
+        </div>
+
+        <script>
+            // Access the camera
+            const video = document.getElementById('camera');
+            const constraints = {
+                video: true,
+            };
+
+            // Request the camera stream
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then((stream) => {
+                    video.srcObject = stream;
+                })
+                .catch((err) => {
+                    console.error('Error accessing the camera:', err);
+                    alert('Unable to access the camera. Please allow camera permissions.');
+                });
+
+            // Capture a snapshot (optional)
+            document.getElementById('capture').addEventListener('click', () => {
+                const canvas = document.getElementById('snapshot');
+                const context = canvas.getContext('2d');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                canvas.style.display = 'block'; // Show the captured snapshot
+            });
+        </script>
+        --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        V1.2
+
+        @extends('layouts/dashboardLayout')
+
+@section('head-access')
+    <link rel="stylesheet" href="{{ asset('css/modulesCSS/qrScannerStyle.css') }}">
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+@endsection
+
+@section('content')
+    <div class="scanner-main">
+        <div id="reader" style="width: 300px; background-color: blue;"></div>
+        <p id="error-message" style="color: red; display: none;">
+            Unable to access the camera. Please allow camera permissions or input the QR code manually.
+        </p>
+
+        <script>
+            function onScanSuccess(decodedText, decodedResult) {
+                // Automatically submit the scanned QR code
+                document.getElementById('qr_code_input').value = decodedText;
+                document.getElementById('qr_code_form').submit();
+            }
+
+            const html5QrCode = new Html5Qrcode("reader");
+            html5QrCode.start(
+                { facingMode: "environment" }, // Use back camera
+                { fps: 10, qrbox: { width: 250, height: 250 } },
+                onScanSuccess
+            ).catch((err) => {
+                console.error("Camera access denied or not available:", err);
+
+                // Show fallback error message
+                document.getElementById("error-message").style.display = "block";
+
+                // Provide manual QR code input form
+                document.getElementById("reader").innerHTML = `
+                    <p>Unable to use the camera.</p>
+                    <form id="manual-input-form" action="{{ route('scan.store') }}" method="POST">
+                        @csrf
+                        <input type="text" name="qr_code_id" placeholder="Enter QR code manually" required>
+                        <button type="submit">Submit</button>
+                    </form>
+                `;
+            }); 
+        </script>
+
+        <!-- Form for auto-submission -->
+        <form id="qr_code_form" action="{{ route('scan.store') }}" method="POST">
+            @csrf
+            <input type="hidden" id="qr_code_input" name="qr_code_id">
+        </form>
+@endsection

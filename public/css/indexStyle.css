@@ -2,98 +2,312 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-image: url('/tempPics/bg-colors.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
 }
 
-.indexMain {
-    position: relative;
+.index-main {
     height: 100vh;
     width: 100vw;
-    background-color: aqua;
 }
 
-.indexContent {
+.index-top { /* HEIGHT: 11% */
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    height: 11%;
+    max-width: 100%;
+    overflow: hidden;
+    background: linear-gradient(to bottom, black, rgba(0, 0, 0, 0));
+}
+
+.index-menu {
+    display: none;
+}
+
+.index-menu ion-icon {
+    color: white;
+    font-size: 25px;
+}
+
+@media (max-width: 639px) {
+    .index-menu {
+        display: block;
+        margin: 0 15px;
+    }
+
+}
+
+.index-top-left {
+    display: flex;
+    align-items: center;
     height: 100%;
-    width: auto;
-    background-color: #021024;
+    width: 35%;
+    font-family: Verdana, Geneva, "Tahoma", sans-serif;
+}
+
+.index-top-left img{
+    height: 140%;
+    aspect-ratio: 1/1;
+    margin: 0 5px -7px 20px;
+}
+
+@media (max-width: 639px) {
+    .index-top-left img{
+        height: 100%;
+        aspect-ratio: 1/1;
+        margin: 0 5px 0px 0px;
+    }
+
+}
+
+
+.index-top-left h1 {
+    font-size: 23px;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 639px) {
+    .index-top-left h1 {
+        display: none;
+    }
+}
+
+
+.index-top-middle {
+    box-sizing: border-box;
+    display: flex;
+    height: 50%;
+    width: 30%;
+    border-right: 1px solid white;
+}
+
+.index-top-nav {
+    display: flex;
     justify-content: center;
     align-items: center;
-
+    height: 100%;
+    width: 25%;
 }
 
-.indexContent img{
-    margin-top: 30px;
-    height: 200px;
-    width: 200px;
+.index-top-nav a {
+    display: block;
+    text-decoration: none;
+    color: rgb(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.index-top-nav a:hover {
+    color: rgb(255, 255, 255, 1);
+    font-size: large;
+}
+
+.index-top-right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 35%; 
+}
+
+.index-top-guest {
+    box-sizing: border-box;
+    justify-items: center;
+    align-content: center;
+    height: 100%;
+    width: 20%;
+}
+
+
+#log-in {
+    width: 25%;
+}
+
+.index-top-guest a {
+    display: block;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.1s ease;
+}
+
+#sign-up a {
+    padding: 15px 0px 15px 30px;
+    color: rgb(255, 255, 255, 0.7);
+}
+
+#log-in a {
+    padding: 15px 30px;
+    background-color: white;
+    color: black;
+    border-radius: 25px;
+}
+
+#sign-up:hover {
+    font-size: large;
+    color: rgb(255, 255, 255, 1);
     
 }
 
-.indexContent h1 {
+#log-in:hover {
+    font-size: large;
+}
+
+@media (max-width: 639px) {
+    .index-top-middle, .index-top-right {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+/* BODY */
+
+
+
+
+
+
+
+.index-body {
+    display: flex; /* Content Side-to-Side */
+    height: 89%;
+}
+
+.index-body-left {
+    height: 100%;
+    width: 60%;
+}
+
+.index-body-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: fit-content;
+    max-width: 100%;
+    padding-left: 50px;
+} 
+
+@media (max-width: 639px) {
+    .index-body-content {
+        padding: 0 10px;
+    } 
+}
+
+.index-body-content h5 {
     color: white;
-    margin: 5px 0 0;
+    font-size: 50px;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#mobile-h5 {
+    display: none;
+}
+
+#unleash, #your-strength, #transform, #your-life {
+    margin: 0;
     padding: 0;
-
 }
 
-.indexContent p {
+@media (max-width: 639px) {
+    #web-h5 {
+        display: none;
+    }
+
+    #mobile-h5 {
+        display: contents;
+    }
+
+    #unleash, #transform {
+        font-size: 18px;
+    }
+
+    #your-strength, #your-life {
+        font-size: 24px;
+    }
+}
+
+
+#message {
     color: white;
-    font-size: 12px;
-
+    font-size: 14px;
+    padding: 0;
+    margin: 3px 0 8px 0;
+    font-family: Helvetica, sans-serif;
+    letter-spacing: 0.5px;
 }
 
-.indexContent a{
+@media (max-width: 639px) {
+    #message {
+        color: white;
+        font-size: 12px;
+        padding: 0;
+        margin: 5px 0 7px 0;
+    }
+}
+
+.index-body-content a{
     text-align: center;
     align-content: center;
     text-decoration: none;
-    font-size: 12px;
-    height: 35px;
-    width: 160px;
-    color: white;
-    margin-top: 60px;
-    border-radius: 20px;
-    background-color: #511FCB;
-    
+    font-size: 14px;
+    height: 50px;
+    width: 150px;
+    color: black;
+    margin-top: 35px;
+    border-radius: 5px;
+    background-color: #daa300;
+    box-shadow: 0px 4px 6px rgb(0, 0, 0, 0.7);
 }
 
-#logMain {
-    height: 100vh;
-    width: 100vw;
+@media (max-width: 639px) {
+    .index-body-content a{
+        height: 40px;
+        width: 120px;
+        font-size: 12px;
+        margin-top: 8px;
+    }
 }
 
-.logMain img {
+.index-body-right {
+    overflow: hidden;
+    align-content: flex-end;
     height: 100%;
+    width: 40%;
+}
+
+.index-body-right img {
+    margin-bottom: -4px;
     width: 100%;
+    aspect-ratio: 12/11;
 }
 
-.logContent {
-    height: 80%;
-    width: 50%;
-    background-color: rebeccapurple;
-}
-
-@media screen and (min-width: 768px) {
-    .indexMain {
-        background-image: url('tempPics/image.jpg');
+@media (max-width: 639px) {
+    .index-body {
+        display: flex;
+        flex-direction: column;
+        height: 89%;
     }
 
-    .indexContent img {
-        margin-top: 0;
-        height: 300px;
-        width: 300px;
+    .index-body-left {
+        width: 100%;
+        height: 50%;
+        order: 2;
     }
 
-    .indexContent h1 {
-        font-size: 36px;
-    }
-
-    .indexContent p {
-        font-size: 16px;
-    }
-
-    .indexContent a {
-        font-size: 16px;
-        height: 50px;
-        width: 200px;
+    .index-body-right {
+        justify-items: center;
+        align-content: center;
+        height: 50%;
+        width: 100%;
+        order: 1;
     }
 }

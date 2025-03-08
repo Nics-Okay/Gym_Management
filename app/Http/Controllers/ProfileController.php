@@ -14,7 +14,14 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
+    public function adminProfile(Request $request): View
+    {
+        return view('admin.profile', [
+            'user' => $request->user(),
+        ]);
+    }
+
+    public function customerProfile(Request $request): View
     {
         return view('profile.edit', [
             'user' => $request->user(),
@@ -28,6 +35,7 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
 
+        // optimize and only save when there's a change
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }

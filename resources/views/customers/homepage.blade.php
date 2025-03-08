@@ -1,9 +1,28 @@
 @extends('layouts.customerLayout')
 
+@section('title-main', 'Home')
+
 @section('customerContent')
-<div class="content-title">
-    <h1>Home</h1>
-</div>
+    @include('partials.customerTitle')
+    <div class="section-top">
+        <div class="section-top-title">
+            <h1>Welcome to Boss Lapuz Fitness Gym</h1>
+        </div>
+        <div class="section-top-image">
+            <div class="section-top-image-holder">
+                <img src="{{ asset('tempPics/blapuz.jpg') }}" alt="Boss Lapuz Gym">
+            </div>
+        </div>
+    </div>
+    <div class="section-bottom">
+        <div class="section-bottom-stats">
+            <h2>Membership Status: {{ $member->membership_status }}</h2>
+        </div>
+    </div>
+@endsection
+
+{{--
+
 <div class="info-1">
     <div class="info-1-title">
         <h2>Current Weight</h2>
@@ -36,4 +55,4 @@
     </h2>
     <div class="info-2-content"></div>
 </div>
-@endsection
+--}}

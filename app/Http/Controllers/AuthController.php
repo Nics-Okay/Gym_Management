@@ -37,8 +37,10 @@ class AuthController extends Controller
     
             return redirect()->route('customer.homepage'); // Redirect customer to their homepage
         }
-    
-        return response()->json(['message' => 'Invalid credentials.'], 401);
+
+        return redirect()->back()->withErrors([
+            'error' => 'Invalid username or password.',
+        ])->withInput();
     }
 
     public function showRightDashboard() {

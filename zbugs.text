@@ -1,0 +1,6 @@
+Bugs/Issues
+
+1. May pula sa conditional ng edit
+2. Yung PIN nadedetect as password
+3. Pag galing ng admin pin verify tapos nag back and pinindot yung login/register,
+    dumidiretso na sa dashboard which is dapat admmin pin ulit.

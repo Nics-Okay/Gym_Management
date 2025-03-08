@@ -30,7 +30,7 @@ class AdminSeeder extends Seeder
             // Update the existing admin's information.
             DB::table('users')->where('email', $email)->update([
                 'role' => 'customer', // Ensure the role is explicitly set.
-                'admin_pin' => null, // Update the PIN.
+                'admin_code' => null, // Update the PIN.
                 'password' => $admin->password
                 
                 // Hash::make('newpassword'),  Update password if needed.

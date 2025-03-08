@@ -1,45 +1,30 @@
-Route::get('/profile', [PageController::class, 'profile'])->name('page.profile');
-Route::get('/clients', [PageController::class, 'clientsInformation'])->name('page.clients');
-Route::get('/members/status', [PageController::class, 'membersStatus'])->name('page.status');
-Route::get('/members/tracker', [PageController::class, 'membersTracker'])->name('page.tracker');
-Route::get('/guest/tracker', [PageController::class, 'guestTracker'])->name('page.guest');
-Route::get('/rates', [PageController::class, 'rates'])->name('page.rates');
-Route::get('/transactions/history', [PageController::class, 'transactionsHistory'])->name('page.transactions');
-Route::get('/transactions/pending', [PageController::class, 'transactionsPending'])->name('page.pending');
-Route::get('/revenue/monthly', [PageController::class, 'revenueMonthly'])->name('page.revenue');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner Test</title>
+    <script src="https://unpkg.com/html5-qrcode/html5-qrcode.min.js"></script>
+</head>
+<body>
+    <h1>QR Code Scanner Test</h1>
+    <div id="reader" style="width: 300px;"></div>
+    <p id="scan-result" style="color: green; font-weight: bold;">Scan a QR code...</p>
 
-public function profile(){
-  return view('profile');
-}
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            document.getElementById('scan-result').textContent = `Scanned: ${decodedText}`;
+        }
 
-public function clientsInformation(){
-  return view('clients');
-}
-
-public function membersStatus(){
-  return view('status');
-}
-
-public function membersTracker(){
-  return view('tracker');
-}
-
-public function guestTracker(){
-  return view('guest');
-}
-
-public function rates(){
-  return view('rates');
-}
-
-public function transactionsHistory(){
-  return view('transactions');
-}
-
-public function transactionsPending(){
-  return view('pending');
-}
-
-public function revenueMonthly(){
-  return view('revenue');
-}
+        const html5QrCode = new Html5Qrcode("reader");
+        html5QrCode.start(
+            { facingMode: "environment" }, // Use the back camera
+            { fps: 10, qrbox: { width: 250, height: 250 } }, 
+            onScanSuccess
+        ).catch((err) => {
+            console.error('Error starting QR Code Scanner:', err);
+            document.getElementById('scan-result').textContent = 'Error accessing the camera. Please check permissions.';
+        });
+    </script>
+</body>
+</html>

@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-}
+}   
 
 .guestContainer {
     position: relative;
@@ -11,19 +11,19 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #021024;
+    background-color: black;
 }
 
 .guestSlot {
     height: 60%;
     width: 100%;
-    max-width: 448px; /* sm:max-w-md (28rem = 28 × 16px) */
-    margin-top: 24px; /* mt-6 (1.5rem = 1.5 × 16px) */
-    padding: 16px 24px; /* px-6 and py-4 (1rem = 16px, 1.5rem = 24px) */
-    background-color: #B0A6A7; /* bg-white */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
-    overflow: hidden; /* overflow-hidden */
-    border-radius: 20px; /* sm:rounded-lg (0.5rem = 8px) */
+    max-width: 448px;
+    margin-top: 24px;
+    padding: 16px 24px;
+    background-color: #B0A6A7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+    border-radius: 20px;
 }
 
 @media (max-width: 639px) {

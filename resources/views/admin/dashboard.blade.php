@@ -1,81 +1,77 @@
-@extends('layouts.dashLayout')
+@extends('layouts.dashboardLayout')
 
 @section('content')
-<div class="page-info">
-    <h2>Dashboard Real</h2>
+<div class="dashboard-section">
+    <div class="page-info">
+        <h2>Dashboard</h2>
+    </div>
+    <div class="page-menus">
+        <a href="#" class="menu-link">
+            <div class="page-menu">
+                <div class="menu-title">TOTAL MEMBERS</div>
+                <div class="menu-info">24</div>
+            </div>
+            <div class="page-icon">
+                <div class="menu-icon"><ion-icon name="people"></ion-icon></div>
+            </div>
+        </a>
+        <a href="#" class="menu-link">
+            <div class="page-menu">
+                <div class="menu-title">ACTIVE MEMBERS</div>
+                <div class="menu-info">24</div>
+            </div>
+            <div class="page-icon">
+                <div class="menu-icon"><ion-icon name="accessibility"></ion-icon></div>
+            </div>
+        </a>
+        <a href="#" class="menu-link">
+            <div class="page-menu">
+                <div class="menu-title">DAILY ATTENDEE'S</div>
+                <div class="menu-info">24</div>
+            </div>
+            <div class="page-icon">
+                <div class="menu-icon"><ion-icon name="footsteps"></ion-icon></div>
+            </div>
+        </a>
+        <a href="#" class="menu-link">
+            <div class="page-menu">
+                <div class="menu-title">MONTHLY ATTENDEE'S</div>
+                <div class="menu-info">24</div>
+            </div>
+            <div class="page-icon">
+                <div class="menu-icon"><i class="fa-solid fa-people-roof"></i></div>
+            </div>
+        </a>
+        <a href="#" class="menu-link">
+            <div class="page-menu">
+                <div class="menu-title">MONTHLY INCOME</div>
+                <div class="menu-info">PHP 0.00</div>
+            </div>
+            <div class="page-icon">
+                <div class="menu-icon"><ion-icon name="wallet"></ion-icon></div>
+            </div>
+        </a>
+        <a href="#" class="menu-link">
+            <div class="page-menu">
+                <div class="menu-title">PENDING PAYMENTS</div>
+                <div class="menu-info">24</div>
+            </div>
+            <div class="page-icon">
+                <div class="menu-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            </div>
+        </a>
+    </div>
+    <div class="page-content">
+        <h1>Revenue and Visitors Report</h1>
+        <div class="dashboard-report">
+            <div class="dashboard-chart">
+
+            </div>
+            <div class="dashboard-chart">
+
+            </div>
+        </div>
+    </div>
 </div>
-<div class="page-menus">
-    <a href="#" class="menu-link">
-        <div class="page-menu">
-            <div class="menu-title">TODAY'S EARNINGS</div>
-            <div class="menu-info">PHP 0.00</div>
-        </div>
-        <div class="page-icon">
-            <div class="menu-icon"><ion-icon name="wallet"></ion-icon></div>
-        </div>
-    </a>
-    <a href="#" class="menu-link">
-        <div class="page-menu">
-            <div class="menu-title">THIS MONTH'S EARNINGS</div>
-            <div class="menu-info">PHP 0.00</div>
-        </div>
-        <div class="page-icon">
-            <div class="menu-icon"><ion-icon name="stats-chart"></ion-icon></div>
-        </div>
-    </a>
-    <a href="#" class="menu-link">
-        <div class="page-menu">
-            <div class="menu-title">ACTIVE MEMBERS</div>
-            <div class="menu-info">24</div>
-        </div>
-        <div class="page-icon">
-            <div class="menu-icon"><ion-icon name="fitness"></ion-icon></div>
-        </div>
-    </a>
-    <a href="#" class="menu-link">
-        <div class="page-menu">
-            <div class="menu-title">ATTENDEE'S</div>
-            <div class="menu-info">24</div>
-        </div>
-        <div class="page-icon">
-            <div class="menu-icon"><ion-icon name="people"></ion-icon></div>
-        </div>
-    </a>
-    <a href="#" class="menu-link">
-        <div class="page-menu">
-            <div class="menu-title">MEMBERSHIP REQUEST</div>
-            <div class="menu-info">8</div>
-        </div>
-        <div class="page-icon">
-            <div class="menu-icon"><ion-icon name="person-add"></ion-icon></div>
-        </div>
-    </a>
-    <a href="#" class="menu-link" id="ml-deals">
-        <div class="page-menu" id="pm-deals">
-            <div class="menu-title" id="mt-deals">DEALS AND PROMOS</div>
-        </div>
-        <div class="page-icon" id="pi-deals">
-            <div class="menu-icon" id="mi-deals"><ion-icon name="gift"></ion-icon></div>
-        </div>
-    </a>
-    <a href="#" class="menu-link" id="ml-clients">
-        <div class="page-menu" id="pm-clients">
-            <div class="menu-title" id="mt-clients">CLIENT'S ACCOUNTS</div>
-        </div>
-        <div class="page-icon" id="pi-clients">
-            <div class="menu-icon" id="mi-clients"><ion-icon name="person"></ion-icon></div>
-        </div>
-    </a>
-    <a href="#" class="menu-link" id="ml-transactions">
-        <div class="page-menu" id="pm-transactions">
-            <div class="menu-title" id="mt-transactions">TRANSACTIONS</div>
-        </div>
-        <div class="page-icon" id="pi-transactions">
-            <div class="menu-icon" id="mi-transactions"><ion-icon name="receipt"></ion-icon></ion-icon></div>
-        </div>
-    </a>
-</div>
-<div class="page-content">
-    <h1>Something must be shown here.</h1>
-</div>
+@include('partials.infoside')
 @endsection
