@@ -28,8 +28,8 @@
         <ul>
             <li><a href="{{route('admin.rates')}}">Membership Rates</a></li>
             <li><a href="{{route('admin.history')}}">Promotions</a></li>
-            <li><a href="{{route('admin.pending')}}">Payments</a></li>
-            <li><a href="#">Transactions History</a></li>
+            <li><a href="{{route('admin.payments')}}">Payments</a></li>
+            <li><a href="{{route('admin.history')}}">Transactions History</a></li>
             <li><a href="#">Reports & Records</a></li>
             <li><a href="#">Reviews & Feedback</a></li>
             <li><a href="#">Lost Items Record</a></li>

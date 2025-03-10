@@ -8,6 +8,32 @@ use App\Models\Rate;
 
 class RatesController extends Controller
 {
+    public function show(){
+        $rates = Rate::all();
+
+        return view('admin.rates', ['rates' => $rates]);
+    }
+
+    public function edit(Rate $rate) {
+        return view('admin.rates.edit', ['rate' => $rate]);
+    }
+
+    public function update(Rate $rate, Request $request){
+        
+        $data = $request->validate([
+            'name'           => 'required|string|max:255',
+            'duration_option' => 'required',
+            'price'          => 'required|integer'
+        ]);
+
+        $option = explode('_', $request->input('duration_option'));
+            $data['duration_value'] = (int) $option[0]; // update the $data array manually 
+            $data['duration_unit']  = $option[1]; // update the $data array manually 
+
+        $rate->update($data);
+        return redirect(route('admin.rates'))->with('success', 'Rate Updated Successfully');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -38,34 +64,6 @@ class RatesController extends Controller
         }
         
         return redirect()->route('admin.rates')->with('success', 'Rate Created Successfully');
-
-        /*
-
-        return redirect()->route('rates.show', $rate->id)
-                        ->with('futureDate', $futureDate->toDateString());
-        */
-    }
-
-    public function edit(Rate $rate){
-        /* $product is a variable params from the route */
-        return view('rates.edit', ['rate' => $rate]);
-
-    }
-
-    public function update(Rate $rate, Request $request){
-        
-        $data = $request->validate([
-            'name'           => 'required|string|max:255',
-            'duration_option' => 'required',
-            'price'          => 'required|integer'
-        ]);
-
-        $option = explode('_', $request->input('duration_option'));
-            $data['duration_value'] = (int) $option[0]; // update the $data array manually 
-            $data['duration_unit']  = $option[1]; // update the $data array manually 
-
-        $rate->update($data);
-        return redirect(route('admin.rates'))->with('success', 'Rate Updated Successfully');
     }
 
     public function destroy(Rate $rate){

@@ -16,10 +16,9 @@
         @endif
 
         <div class="scanner-content">
-            <div id="clock" style="font-size: 20px; font-weight: bold; color: white;"></div>
-            <div id="date" style="font-size: 16px; font-weight: normal; color: white;"></div>
 
             <div class="scanner">
+                <h2 class="scanner-header">QR Gym Monitoring</h2>
                 <div id="reader"></div>
                 <p id="error-message" style="color: red; display: none;">
                     Unable to access the camera. Please allow camera permissions or input the QR code manually.
@@ -81,15 +80,21 @@
                         <!-- Form for auto-submission -->
                 <form id="qr_code_form" action="{{ route('scan.store') }}" method="POST">
                     @csrf
-                    <input type="text" id="qr_code_input" name="qr_code_id" required>
-                    <input type="text" id="time" name="time">
-                    <button type="submit" id="qr_code_submit">Submit</button>
+                    <input type="text" id="qr_code_input" name="qr_code_id" required placeholder="Enter name">
+                    <input type="hidden" id="time" name="time">
+                    <button type="submit" id="qr_code_submit">SUBMIT</button>
                 </form>
+            </div>
+            <div class="clock_date">
+                Current Date and Time:
+                <div id="date"></div>
+                at
+                <div id="clock"></div>
             </div>
         </div>
 
         <div class="scan-record">
-            <p style="color: white;">Scanned Data</p>
+            <p style="color: black;">DAILY MEMBER LOGS</p>
             <table border="1">
                 <thead>
                     <tr>

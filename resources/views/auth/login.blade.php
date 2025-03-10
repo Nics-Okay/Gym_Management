@@ -15,6 +15,12 @@
             <div class="error">{{ $errors->first('error') }}</div>
         @endif
 
+        @if (session('error'))
+            <div>
+                {{ session('error') }}
+            </div>
+        @endif
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

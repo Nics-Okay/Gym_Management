@@ -16,7 +16,9 @@ class MembersPageController extends Controller
         $id = Auth::user()->id;
         $member = Member::where('user_id', $id)->first();
 
-        return view('customers.homepage', ['member' => $member]);
+        $membershipStatus = $member ? $member->membership_status ?? 'Inactive' : 'Inactive';
+
+        return view('customers.homepage', ['member' => $membershipStatus]);
     }
 
     public function logs(){
@@ -58,23 +60,59 @@ class MembersPageController extends Controller
         $user = Auth::user();
         $rates = Rate::where('id', $rate)->first();
 
+        $member = Member::where('user_id', $user->id)->first();
+
         $duration = $rates->duration_value;
         $unit = $rates->duration_unit; // Example: days, months
-        $validity = now()->add($duration, $unit);
+        // $validity = now()->add($duration, $unit);
+
+        // Determine validity
+        if ($member) {
+            $membershipValidity = $member->membership_validity;
+            if ($membershipValidity && \Carbon\Carbon::parse($membershipValidity)->isFuture()) {
+                // If membership is still valid, extend it
+                $total_validity = \Carbon\Carbon::parse($membershipValidity)->add($duration, $unit);
+            } else {
+                // If membership is expired or null, use now() as the starting point
+                $total_validity = now()->add($duration, $unit);
+            }
+
+            // Set additional variables for existing members
+            $heading = 'Extend Membership';
+            $message = 'Your membership will be extended.';
+            $contact_number = $member->contact_number ?? '';
+            $address = $member->address ?? ''; // Assuming email is on the related user table
+
+        } else {
+            // If no member record exists, calculate validity starting from now
+            $total_validity = now()->add($duration, $unit);
+    
+            // Set variables for new members
+            $heading = 'Avail Membership';
+            $message = 'You are availing a new membership.';
+            $contact_number = '';
+            $address = '';
+        }
+
         return view('customers.availMembership', [
             'user' => $user,
             'rates' => $rates,
-            'validity' => $validity,
+            'validity' => now()->add($duration, $unit), // New validity for reference
+            'total_validity' => $total_validity,       // Final calculated validity
+            'heading' => $heading,                     // Dynamic heading for the view
+            'message' => $message,                     // Additional info for the view
+            'contact_number' => $contact_number,       // Contact number for the input field
+            'address' => $address,                         // Email for the input field
         ]);
     }
 
     public function store(Request $request) {
         // Validate inputs
         $validated = $request->validate([
-            'name' => 'required|string|min:3|max:50',
-            'contact_number' => 'required|string|min:11|max:13',
-            'address' => 'required|string|min:5|max:255',
-            'rate_id' => 'required|exists:rates,id', // Ensure the selected rate exists
+            'name' => 'required|string|min:3|max:50', ///
+            'contact_number' => 'required|string|min:11|max:13', ///
+            'address' => 'required|string|min:5|max:255', ///
+            'rate_id' => 'required|exists:rates,id', ///
         ]);
 
         // Retrieve user and selected rate
@@ -93,15 +131,32 @@ class MembersPageController extends Controller
         $unit = $rate->duration_unit; // Example: days, months
         $validity = now()->add($duration, $unit);
 
-        $member = Member::create([
-            'user_id' => $user->id,
-            'contact_number' => $request->contact_number,
-            'address' => $request->address,
-            'membership_status' => 'active',
-            'availed_membership' => $rate->name,
-            'membership_validity' => $validity,
-            'access_type' => 'Allowed',
-        ]);
+        $member = Member::where('user_id', $user->id)->first();
+
+        if ($member) {
+            $member->fill([
+                'contact_number' => $validated['contact_number'],
+                'address' => $validated['address'],
+                'membership_status' => 'Active',
+                'availed_membership' => 'Extended',
+                'membership_validity' => \Carbon\Carbon::parse($member->membership_validity)->add($duration, $unit), // Extend validity
+                'access_type' => 'Allowed',
+            ]);
+        
+            $member->save(); // Save the changes to the database
+        } else {
+            // Create new member
+            $member = Member::create([
+                'user_id' => $user->id,
+                'customer_name' => $validated['name'],
+                'contact_number' => $validated['contact_number'],
+                'address' => $validated['address'],
+                'membership_status' => 'Active',
+                'availed_membership' => $rate->name,
+                'membership_validity' => $validity,
+                'access_type' => 'Allowed',
+            ]);
+        }
 
         // Update availed_by count in rates table
         $rate_identity = Rate::find($request->rate_id);

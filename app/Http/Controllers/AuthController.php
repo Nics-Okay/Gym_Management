@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -15,9 +16,33 @@ class AuthController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login'); //AuthController[create]->>VIEW[auth.login]
+        return view('auth.login');
     }
 
+    public function login(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(route('dashboard', absolute: false));
+    }
+
+        /**
+     * Destroy an authenticated session.
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+    /*
     public function login(Request $request)
     {
         $request->validate([
@@ -42,7 +67,9 @@ class AuthController extends Controller
             'error' => 'Invalid username or password.',
         ])->withInput();
     }
+    */
 
+    
     public function showRightDashboard() {
         {
             // Get the authenticated user

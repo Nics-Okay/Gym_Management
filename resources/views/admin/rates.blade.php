@@ -1,55 +1,67 @@
-@extends('layouts.dashLayout')
+@extends('layouts.dashboardLayout')
+
+@section('head-access')
+    <link rel="stylesheet" href="{{ asset('css/modulesCSS/adminRatesStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modulesCSS/reportStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modulesCSS/tableStyle.css') }}">
+@endsection
 
 @section('content')
-<div class="rates-main-container">
-    <div class="rates-sub-container">
-        <div class="rates-table-container">
-            <h1>Membership Rates</h1>
-            <div>
-                @if(session()->has('success'))
-                    <div>
-                        {{session('success')}}
-                    </div>
-                @endif
+    <div class="section-style">
+        <div class="reports-main">
+            <div class="reports-container">
+                Content 1
             </div>
-            <div>
-                <a href="{{route('admin.createRate')}}">Create New Rate</a>
+            <div class="reports-container">
+                Content 2
             </div>
-            <div>
-                <table border="1">
+            <div class="reports-container">
+                Content 3
+            </div>
+        </div>
+        <div class="table-main">
+            <div class="table-header">
+                <h3 class="table-header-info">Membership Rates</h3>
+                <div class="table-header-button">
+                    <a href="{{route('admin.createRate')}}"><ion-icon name="add-outline"></ion-icon>Create New Rate</a>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <div class="table-container-header">
+                    <h5 class="table-container-header-info"></h5>
+                </div>
+                <table class="table-content">
                     <tr>
                         <th>#</th>
                         <th>Subscription Name</th>
                         <th>Duration</th>
                         <th>Price</th>
                         <th>No. of Times Availed</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Action</th>
                     </tr>
                     @foreach($rates as $rate)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td id="center-align">{{ $loop->iteration }}</td>
                         <td>{{$rate->name}}</td>
-                        <td>{{ $rate->duration_value }} {{ $rate->duration_unit }}(s)</td>
-                        <td>{{$rate->price}}</td>
-                        <td>{{$rate->availed_by}}</td>
-                        <td>
-                            <a href="{{route('rates.edit', ['rate' => $rate])}}">Edit</a>
-                            {{-- ['rate'] is from the params in the route --}}
-                        </td>
-                        <td>
+                        <td id="center-align">{{ $rate->duration_value }} {{ $rate->duration_unit }}(s)</td>
+                        <td id="center-align">{{$rate->price}}</td>
+                        <td id="center-align">{{ $rate->availed_by ?? '--:--' }}</td>
+                        <td id="center-align" class="action-button">
+                            <a href="{{route('rates.edit', ['rate' => $rate])}}" class="edit-button"><i class="fa-solid fa-pen-to-square"></i></a>
                             <form method="post" action="{{route('rates.destroy', ['rate' => $rate])}}">
                                 @csrf 
                                 @method('delete')
-                                <input type="submit" value="Delete">
+                                <button type="submit" class="delete-button" style="background: none; border: none; cursor: pointer;">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>
                     @endforeach
                 </table>
+                <h5 class="table-container-additional-info">Create membership rates at ease.</h5>
             </div>
         </div>
     </div>
-</div>
-
 @endsection

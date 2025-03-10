@@ -6,7 +6,6 @@
 <body>
     <h1>Edit Rate</h1>
     <div>
-        {{-- Line of codes to print error if there's any --}}
         @if($errors->any())
         <ul>
             @foreach($errors->all() as $error)
@@ -15,7 +14,7 @@
         </ul>
         @endif
     </div>
-    <form method="POST" action="{{ route('rates.update', ['rate' => $rate]) }}">
+    <form method="post" action="{{ route('rates.update', ['rate' => $rate]) }}">
         @csrf
         @method('put')
         <div>
@@ -26,7 +25,7 @@
             <label for="duration">Duration:</label>
             <!-- Hidden fields for splitting value and unit -->
             <select name="duration_option" id="duration_option" required>
-                 <option value="1_day" {{ ($rate->duration_value == 1 && $rate->duration_unit == 'day') ? 'selected' : '' }}>1 day</option>
+                <option value="1_day" {{ ($rate->duration_value == 1 && $rate->duration_unit == 'day') ? 'selected' : '' }}>1 day</option>
                 <option value="7_day" {{ ($rate->duration_value == 7 && $rate->duration_unit == 'day') ? 'selected' : '' }}>7 days</option>
                 <option value="15_day" {{ ($rate->duration_value == 15 && $rate->duration_unit == 'day') ? 'selected' : '' }}>15 days</option>
                 <option value="1_month" {{ ($rate->duration_value == 1 && $rate->duration_unit == 'month') ? 'selected' : '' }}>1 month</option>

@@ -18,12 +18,13 @@
                 <h3>{{ $rates->name }}</h3>
                 <p>Duration: {{ $rates->duration_value }} {{ $rates->duration_unit }} (s)</p>
                 <p>Valid Until: {{ $validity }}</p>
+                <p>Updated validity after availing: {{ $total_validity }}</p>
                 <p>Membership Price: <b>$</b>{{ $rates->price }}</p>
             </div>
             <h2 id="provide-required">
                Provide required information:
             </h2>
-            <form action="{{ route('avail.store') }}" method="POST">
+            <form action="{{ route('transactions.store') }}" method="POST">
                 @csrf
                 <div>
                     <label for="name">Name</label>
@@ -32,12 +33,12 @@
 
                 <div>
                     <label for="contact_number">Contact Number</label>
-                    <input type="text" name="contact_number" id="contact_number" required autofocus>
+                    <input type="text" name="contact_number" id="contact_number" value="{{ $contact_number }}" required autofocus>
                 </div>
                 
                 <div>
                     <label for="address">Address</label>
-                    <input type="text" name="address" id="address" required>
+                    <input type="text" name="address" id="address" value="{{ $address }}" required>
                 </div>
 
                 <!-- Hidden input to send the selected rate -->

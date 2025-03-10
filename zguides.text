@@ -1,3 +1,40 @@
 Link Fontawesome 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@5.15.4/css/all.min.css" integrity="sha384-jLKHWM+gB1i5Y1b1D1b1D1b1D1b1D1b1D1b1D1b1D1b1D1b1D1b1D1b1D1b1D1b1" crossorigin="anonymous">
+
+
+
+
+
+
+
+
+                /*
+                return redirect()->back()->withErrors([
+                    'email' => ('Your email is not verified. Please check your inbox for the verification link.'),
+                ])->withInput();
+
+                @error('email')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+                */
+
+
+
+
+
+// SECTION: Email verification routes
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill(); // Mark the email as verified
+    return redirect('/admin'); // Redirect to a specific page after verification
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+// ENDSECTION: Email verification routes

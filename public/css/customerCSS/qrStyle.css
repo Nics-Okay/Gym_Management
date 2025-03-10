@@ -12,7 +12,48 @@ h1 {
 }
 
 .qr-enclosure {
-    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
     border-radius: 10px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
+}
+
+.qr-main h1 {
+    
+    margin: 20px 0px;
+    padding: 0;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.expiration-remind {
+    font-size: 17px;
+    font-weight: bold;
+    color: white;                                   
+}
+
+.reminder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 15px;
+}
+
+.reminder-icon i {
+    font-size: 30px;
+    color: yellow;  
+}
+
+.reminder p {
+    color: white;
+    text-align: center;
+    
+}
+
+.reminder-icon {
+    width: 30%;
+    padding: 0 10px;
 }

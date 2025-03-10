@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
@@ -13,30 +13,26 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $email = 'meh@gmail.com'; // Change this to your desired email.
+        $email = 'officialnicholeson@gmail.com'; // Target email for updating
 
-        // Check if the user with this email already exists.
-        $admin = DB::table('users')->where('email', $email)->first();
+        // Find the user with this email
+        $admin = User::where('email', $email)->first();
 
-        if (!$admin) {
-            // Insert a new admin if not found.
-            DB::table('users')->insert([
-                'email' => $email,
-                'role' => 'customer',
-                'password' => Hash::make('password'),
-                'admin_pin' => Hash::make('123456'),
+        if ($admin) {
+            // Update the existing user's role and clear admin_code if needed
+            $admin->update([
+                'role' => 'admin', // Update to admin role
+                'admin_code' => Hash::make('121212'), // Update admin code
             ]);
-        } else {
-            // Update the existing admin's information.
-            DB::table('users')->where('email', $email)->update([
-                'role' => 'customer', // Ensure the role is explicitly set.
-                'admin_code' => null, // Update the PIN.
-                'password' => $admin->password
-                
-                // Hash::make('newpassword'),  Update password if needed.
-            ]);
+        } elseif (!$admin) {
+            // User not found, handle appropriately (optional)
+            $this->command->info("User with email {$email} does not exist.");
         }
     }
 }
 
+// commands: Hash::make('value'), null
+
 // You don't have a purpose to be here.
+
+// RUN: php artisan db:seed --class=AdminSeeder

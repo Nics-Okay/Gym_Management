@@ -1,0 +1,60 @@
+    public function store(Request $request) {
+        // Validate inputs
+        $validated = $request->validate([
+            'name' => 'required|string|min:3|max:50',
+            'contact_number' => 'required|string|min:11|max:13',
+            'address' => 'required|string|min:5|max:255',
+            'rate_id' => 'required|exists:rates,id', // Ensure the selected rate exists
+        ]);
+
+        // Retrieve user and selected rate
+        // $user = Auth::user(); // Assuming user is logged in
+        $user = $request->user();
+
+        if ($user->isDirty('name')) {
+            $user->fill(['name' => $validated['name']]);
+            $user->save();
+        }
+
+        $rate = Rate::findOrFail($request->rate_id);
+
+        // Calculate membership validity
+        $duration = $rate->duration_value;
+        $unit = $rate->duration_unit; // Example: days, months
+        $validity = now()->add($duration, $unit);
+
+        $member = Member::where('user_id', $user->id)->first();
+
+        if ($member) {
+            $member = Member::update([
+                // Update exisiting member instead of creating new one
+                'contact_number' => $validated['contact_number'],
+                'address' => $validated['address'],
+                'membership_status' => 'Active',
+                'availed_membership' => 'Extended',
+                'membership_validity' => $member->membership_validity->add($duration, $unit), // Extend validity
+                'access_type' => 'Allowed',
+            ]);
+        } else {
+            // Create new member
+            $member = Member::create([
+                'user_id' => $user->id,
+                'contact_number' => $validated['contact_number'],
+                'address' => $validated['address'],
+                'membership_status' => 'Active',
+                'availed_membership' => $rate->name,
+                'membership_validity' => $validity,
+                'access_type' => 'Allowed',
+            ]);
+        }
+
+        // Update availed_by count in rates table
+        $rate_identity = Rate::find($request->rate_id);
+
+        if ($rate_identity) {
+            $rate_identity->availed_by += 1;
+            $rate_identity->save();
+        }
+
+        return redirect()->route('customer.rates')->with('success', 'Membership successfully confirmed!');
+    }

@@ -1,3 +1,8 @@
+body {
+    background-image: none;
+    background-color: rgb(0, 0, 0);
+}
+
 .scanner-main {
     box-sizing: border-box;
     justify-items: center;
@@ -7,33 +12,65 @@
     margin: 10px;
     padding: 10px;
     border-radius: 15px;
-    background-color: rgb(255, 255, 255, 0.7);
+    background-color: beige;
 }
 
 .scanner-content {
     justify-items: center;
-    height: 60%;
+    height: 55%;
     width: 40%;
 }
 
 .scanner {
+    box-sizing: border-box;
+    text-align: center;
     height: fit-content;
-    width: 80%;
-    padding: 20px 20px 5px;
+    width: 85%;
+    margin-top: 20px;
+    padding: 10px 10px 5px;
     border-radius: 5px;
     background-color: white;
 }
+
+.scanner-header {
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 18px;
+}
+
 
 .reader {
     width: 300px;
     background-color: blueviolet;
 }
 
+.clock_date {
+    display: flex;
+    gap: 5px;
+    margin: 15px 0 0;
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}
+
+#qr_code_form {
+    margin: 10px 0 2px;
+}
+
+#qr_code_submit {
+    margin-left: 5px;
+}
+
+#qr_code_submit:hover {
+    cursor: pointer ;
+    text-decoration: underline;
+}
+
 .scan-record {
     box-sizing: border-box;
     justify-items: center;
     align-content: center;
-    height: 40%;
+    height: 45%;
     width: 100%;
     overflow-y: scroll;
     margin: 0 100px;
@@ -49,6 +86,18 @@
     width: 90%;
     margin-bottom: 50px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 639px) {
     .scanner-content {

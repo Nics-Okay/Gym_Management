@@ -16,7 +16,7 @@
     </div>
     <div class="section-bottom">
         <div class="section-bottom-stats">
-            <h2>Membership Status: {{ $member->membership_status }}</h2>
+            <h2>Membership Status: {{ $member }}</h2>
         </div>
     </div>
 @endsection

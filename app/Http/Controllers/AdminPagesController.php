@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\Rate;
 use App\Models\Scan;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -21,18 +23,16 @@ class AdminPagesController extends Controller
         return view('admin.guest');
     }
 
-    public function pendingTransactions(){
-        return view('admin.pending');
+    public function payments(){
+        $payments = Transaction::with('member', 'rate')
+        ->where('status', 'Pending')
+        ->get();
+
+        return view('admin.payments', ['payments' => $payments]);
     }
     
     public function profileSettings(){
         return view('admin.profile');
-    }
-
-    public function membershipRates(){
-        $rates = Rate::all();
-        /* $products is the declared variable to hold all the data the the Products MODEL retrieved */
-        return view('admin.rates', ['rates' => $rates]);
     }
 
     public function revenue(){
@@ -44,7 +44,8 @@ class AdminPagesController extends Controller
     }
 
     public function membersTracker(){
-        return view('admin.tracker');
+        $members = Member::all();
+        return view('admin.tracker', ['members' => $members,]);
     }
 
     public function transactionsHistory(){
