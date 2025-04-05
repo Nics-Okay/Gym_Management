@@ -31,10 +31,14 @@ Route::middleware(['admin', 'verified'])->group(function () {
     Route::get('/admin/profile', [ProfileController::class, 'adminProfile'])->name('admin.profile');
 
     // RATES ROUTES
-    Route::get('/admin/membership/rates', [RatesController::class, 'show'])->name('admin.rates');
-    Route::get('/admin/membership/rates/{rate}/edit', [RatesController::class, 'edit'])->name('rates.edit');
+    Route::get('/admin/membership/rates', [RatesController::class, 'show'])->name('admin.rates'); //
+    Route::get('/admin/membership/rates/{rate}/edit', [RatesController::class, 'edit'])->name('rates.edit'); //
     Route::put('/admin/membership/rates/{rate}/update', [RatesController::class, 'update'])->name('rates.update');
-    Route::delete('/admin/membership/rates/{rate}/destroy', [RatesController::class, 'destroy'])->name('rates.destroy');
+    Route::delete('/admin/membership/rates/{rate}/destroy', [RatesController::class, 'destroy'])->name('rates.destroy'); //
+
+    Route::get('/admin/membership/rates/create', [AdminPagesController::class, 'createRate'])->name('admin.createRate'); //
+    Route::post('/admin/membership/rates/store', [RatesController::class, 'store'])->name('rates.store'); //
+    Route::get('/admin/membership/rates/show', [AdminPagesController::class, 'membershipRates'])->name('rates.show');
 
 
     Route::get('/admin/revenue', [AdminPagesController::class, 'revenue'])->name('admin.revenue'); 
@@ -49,10 +53,6 @@ Route::middleware(['admin', 'verified'])->group(function () {
 
 
     Route::get('/admin/scanner', [AdminPagesController::class, 'scanner'])->name('admin.scanner');
-
-    Route::get('/admin/membership/rates/create', [AdminPagesController::class, 'createRate'])->name('admin.createRate');
-    Route::post('/admin/membership/rates/store', [RatesController::class, 'store'])->name('rates.store');
-    Route::get('/admin/membership/rates/show', [AdminPagesController::class, 'membershipRates'])->name('rates.show');
 
     Route::post('/scan', [AdminPagesController::class, 'scanStore'])->name('scan.store');
 });

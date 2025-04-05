@@ -19,7 +19,7 @@
                 <p>Duration: {{ $rates->duration_value }} {{ $rates->duration_unit }} (s)</p>
                 <p>Valid Until: {{ $validity }}</p>
                 <p>Updated validity after availing: {{ $total_validity }}</p>
-                <p>Membership Price: <b>$</b>{{ $rates->price }}</p>
+                <p>Membership Price: <b>₱</b>{{ $rates->price }}</p>
             </div>
             <h2 id="provide-required">
                Provide required information:

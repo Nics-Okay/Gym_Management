@@ -21,13 +21,13 @@
         <h5 class="menu-heading" id="section-name">MEMBER MANAGEMENT</h5>
         <ul>
             <li><a href="{{route('page.list')}}">Member List</a></li>
-            <li><a href="{{route('admin.tracker')}}">Member Monitoring</a></li>
-            <li><a href="{{route('admin.tracker')}}">Guest Monitoring</a></li>
+            <li><a href="#">Member Monitoring</a></li>
+            <li><a href="#">Guest Monitoring</a></li>
         </ul>
         <h5 class="menu-heading" id="section-name">GYM MANAGEMENT</h5>
         <ul>
             <li><a href="{{route('admin.rates')}}">Membership Rates</a></li>
-            <li><a href="{{route('admin.history')}}">Promotions</a></li>
+            <li><a href="#">Promotions</a></li>
             <li><a href="{{route('admin.payments')}}">Payments</a></li>
             <li><a href="{{route('admin.history')}}">Transactions History</a></li>
             <li><a href="#">Reports & Records</a></li>

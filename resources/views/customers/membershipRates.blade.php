@@ -32,7 +32,7 @@
                         <p>Duration: {{ $rate->duration_value }} {{ $rate->duration_unit }}{{ $rate->duration_value > 1 ? 's' : '' }}</p>
                     </div>
                     <div class="rates-data">
-                        <p>Membership Price: <b>$</b>{{$rate->price}}</p>
+                        <p>Membership Price: <b>₱</b>{{$rate->price}}</p>
                     </div>
                     <div class="rates-data">
                         <p>Times Availed: {{$rate->availed_by}}</p>

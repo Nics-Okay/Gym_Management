@@ -97,6 +97,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+}
+
+.btn-approve {
+    color: white;
+    background-color: green;
+    border: none;
+    padding: 3px 10px;
+}
+
+.btn-cancel {
+    color: white;
+    background-color: red;
+    border: none;
+    padding: 3px 10px;
 }
 
 .renew-button {

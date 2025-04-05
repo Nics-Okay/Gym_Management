@@ -26,7 +26,7 @@ body {
     text-align: center;
     height: fit-content;
     width: 85%;
-    margin-top: 20px;
+    margin-top: 5px;
     padding: 10px 10px 5px;
     border-radius: 5px;
     background-color: white;
@@ -87,6 +87,57 @@ body {
     margin-bottom: 50px;
 }
 
+.scanner-section {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 45%;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.scanner-table-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    margin-bottom: -10px;
+    border-radius: 5px 5px 0 0;
+    background-color: rgb(218, 218, 218);
+}
+
+.table-scanner {
+    width: 100%;
+    overflow-y: scroll;
+    border-collapse: collapse; /* Ensures borders don't double up */
+    background-color: rgb(218, 218, 218);
+}
+
+.table-scanner::-webkit-scrollbar {
+    display: none;
+}
+
+.table-scanner th {
+    border: 2px solid #ccc; /* Border for table cells */
+    padding: 8px;           /* Spacing inside cells */
+    text-align: left;       /* Align text to the left */
+}
+
+.table-scanner td {
+    border: 2px solid #ccc; /* Border for table cells */
+    padding: 8px;           /* Spacing inside cells */
+    text-align: left;       /* Align text to the left */
+}
+
+.table-scanner th {
+    text-align: center;
+    background-color: rgb(142, 175, 235);
+}
+
+.table-scanner tr:nth-child(odd) {
+    background-color: #ffffff;
+}
 
 
 

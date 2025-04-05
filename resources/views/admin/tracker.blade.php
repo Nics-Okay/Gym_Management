@@ -8,6 +8,17 @@
 
 @section('content')
     <div class="section-style">
+        <div class="reports-main">
+            <div class="reports-container">
+                Content 1
+            </div>
+            <div class="reports-container">
+                Content 2
+            </div>
+            <div class="reports-container">
+                Content 3
+            </div>
+        </div>
         <div class="table-main">
             <div class="table-header">
                 <h3 class="table-header-info">Member List</h3>
@@ -23,6 +34,7 @@
                 <table class="table-content">
                     <thead>
                         <tr>
+                            <th rowspan="2">#</th>
                             <th rowspan="2">Name</th>
                             <th rowspan="2">Email</th>
                             <th rowspan="2">Phone</th>
@@ -31,13 +43,19 @@
                             <th rowspan="2">Access Type</th>
                             <th rowspan="2">Actions</th>
                         </tr>
+                        <tr>
+                            <th>Status</th>
+                            <th>Availed</th>
+                            <th>Validity</th>
+                        </tr>
                     </thead>
                     @foreach($members as $member)
                     <tr>
-                        <td>{{ $member->user->name }}</td>
-                        <td>{{ $member->user->email }}</td>
-                        <td>{{ $member->contact_number }}</td>
-                        <td>{{ $member->address }}</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $member->customer_name ?? $member->user->name }}</td>
+                        <td>{{ $member->user->email ?? '--:--' }}</td>
+                        <td id="center-align">{{ $member->contact_number }}</td>
+                        <td id="center-align">{{ $member->address }}</td>
                         <td id="center-align">{{ $member->membership_status }}</td>
                         <td>{{ $member->availed_membership }}</td>
                         <td id="center-align">{{ $member->membership_validity }}</td>

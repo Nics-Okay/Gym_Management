@@ -12,10 +12,10 @@
             <div class="table-header">
                 <h3 class="table-header-info">Transactions History</h3>
                 <div class="table-header-button">
-                    <a href="{{route('admin.createRate')}}"><ion-icon name="add-outline"></ion-icon>Add New Transaction</a>
+                    <a href="#"><ion-icon name="add-outline"></ion-icon>Add New Transaction</a>
                 </div>
             </div>
-            
+
             <div class="table-container">
                 <div class="table-container-header">
                     <h5 class="table-container-header-info"></h5>

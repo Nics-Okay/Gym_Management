@@ -7,12 +7,38 @@ use App\Models\Rate;
 use App\Models\Scan;
 use App\Models\Transaction;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminPagesController extends Controller
 {
-    public function main(){
-        return view('admin.dashboard');
+    public function main()
+    {
+        // Retrieve the count of active members
+        $membersCount = Member::all()->count();
+        $activeMembersCount = Member::where('membership_status', 'active')->count();
+
+        $attendeeDaily = Scan::whereDate('time_in', \Carbon\Carbon::today())->count();
+        $attendeeMonthly = Scan::whereMonth('time_in', \Carbon\Carbon::now()->month)
+            ->whereYear('time_in', \Carbon\Carbon::now()->year)
+            ->count();
+
+        $pendingTransaction = Transaction::where('status', 'pending')->count();
+
+        $income = Transaction::join('rates', 'transactions.rate_id', '=', 'rates.id')
+            ->where('transactions.status', 'approved')
+            ->whereMonth('transactions.validity_start_date', \Carbon\Carbon::now()->month)
+            ->whereYear('transactions.validity_start_date', \Carbon\Carbon::now()->year)
+            ->sum('rates.price');
+    
+        return view('admin.dashboard', [
+            'membersCount' => $membersCount,
+            'activeMembersCount' => $activeMembersCount,
+            'attendeeDaily' => $attendeeDaily,
+            'attendeeMonthly' => $attendeeMonthly,
+            'pendingTransaction' => $pendingTransaction,
+            'income' => $income,
+        ]);
     }
 
     public function clientsInformation(){
@@ -52,10 +78,15 @@ class AdminPagesController extends Controller
         return view('admin.transactions');
     }
 
-    public function scanner(){
-        $scans = Scan::orderBy('created_at', 'DESC')->get(); // Fetch all scan records
-        // $scans = Scan::all(); // Fetch all scan records
-        return view('admin.scanner', compact('scans'));
+    public function scanner()
+    {
+        $attendees = Scan::whereDate('time_in', \Carbon\Carbon::today())
+            ->orderBy('created_at', 'DESC')
+            ->get();
+    
+        $scans = Scan::orderBy('created_at', 'DESC')->get();
+    
+        return view('admin.scanner', compact('scans', 'attendees'));
     }
 
     public function scanStore(Request $request)

@@ -9,7 +9,7 @@
         <a href="#" class="menu-link">
             <div class="page-menu">
                 <div class="menu-title">TOTAL MEMBERS</div>
-                <div class="menu-info">24</div>
+                <div class="menu-info">{{ $membersCount }}</div>
             </div>
             <div class="page-icon">
                 <div class="menu-icon"><ion-icon name="people"></ion-icon></div>
@@ -18,7 +18,7 @@
         <a href="#" class="menu-link">
             <div class="page-menu">
                 <div class="menu-title">ACTIVE MEMBERS</div>
-                <div class="menu-info">24</div>
+                <div class="menu-info">{{ $activeMembersCount }}</div>
             </div>
             <div class="page-icon">
                 <div class="menu-icon"><ion-icon name="accessibility"></ion-icon></div>
@@ -27,7 +27,7 @@
         <a href="#" class="menu-link">
             <div class="page-menu">
                 <div class="menu-title">DAILY ATTENDEE'S</div>
-                <div class="menu-info">24</div>
+                <div class="menu-info">{{ $attendeeDaily }}</div>
             </div>
             <div class="page-icon">
                 <div class="menu-icon"><ion-icon name="footsteps"></ion-icon></div>
@@ -36,7 +36,7 @@
         <a href="#" class="menu-link">
             <div class="page-menu">
                 <div class="menu-title">MONTHLY ATTENDEE'S</div>
-                <div class="menu-info">24</div>
+                <div class="menu-info">{{ $attendeeMonthly }}</div>
             </div>
             <div class="page-icon">
                 <div class="menu-icon"><i class="fa-solid fa-people-roof"></i></div>
@@ -45,7 +45,7 @@
         <a href="#" class="menu-link">
             <div class="page-menu">
                 <div class="menu-title">MONTHLY INCOME</div>
-                <div class="menu-info">PHP 0.00</div>
+                <div class="menu-info">₱ {{ $income }}.00</div>
             </div>
             <div class="page-icon">
                 <div class="menu-icon"><ion-icon name="wallet"></ion-icon></div>
@@ -54,7 +54,7 @@
         <a href="#" class="menu-link">
             <div class="page-menu">
                 <div class="menu-title">PENDING PAYMENTS</div>
-                <div class="menu-info">24</div>
+                <div class="menu-info">{{ $pendingTransaction }}</div>
             </div>
             <div class="page-icon">
                 <div class="menu-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>

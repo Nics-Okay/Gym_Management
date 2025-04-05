@@ -5,31 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Rate;
+use App\Models\User;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class MemberController extends Controller
 {
     public function list()
     {
-        // Fetch all members along with their related user details
         $members = Member::with('user')->get();
-    
-        // Add user name and email to each member
-        $members->each(function ($member) {
-            if ($member->user) {
-                // If the user exists in the users table
-                $member->user_name = $member->user->name; // Call this as user->name
-                $member->user_email = $member->user->email; // Call this as user->email
-            } else {
-                // If the user does not exist in the users table
-                $member->user_name = $member->customer_name;
-                $member->user_email = 'No Email';
-            }
-        });
-    
-        // Return the view with the members' data
-        return view('admin.tracker', compact('members'));
+
+        return view('admin.tracker', [
+            'members' => $members,
+        ]);
     }
+    
 
     public function create() {
         $rates = Rate::all();
@@ -79,7 +68,7 @@ class MemberController extends Controller
         $members = Member::where('id', $member)->first();
 
         $member->user_name = $member->user->name ?? $member->customer_name ?? 'Offline';
-        $member->user_email = $member->user->email ?? 'No Email';
+        $member->user_email = $member->user->email ?? null;
         
         return view('admin.member.editMember', ['member' => $member, 'rates' => $rates]);
     }

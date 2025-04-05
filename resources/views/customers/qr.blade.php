@@ -20,7 +20,7 @@
         </div>
         <div class="reminder">
           <div class="reminder-icon"><i class="fa-solid fa-triangle-exclamation"></i></div> 
-         <p>Your membership will expire on December 31, 2026. Please renew your membership to continue enjoying the benefits</p>
+         <p>Your membership will expire on {{ $membershipValidity }}. Please renew your membership to continue enjoying the benefits</p>
         </div>
     </div>
 @endsection

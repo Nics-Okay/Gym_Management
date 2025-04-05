@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use App\Models\Rate;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -182,7 +183,15 @@ class MembersPageController extends Controller
         $qrCode = QrCode::size(200)->generate($qrCodeId);
 
         // Pass the QR code to the view
-        return view('customers.qr', ['qrCode' => $qrCode]);
+
+        $member = Member::where('user_id', Auth::user()->id)->first();
+
+        $membershipValidity = $member ? Carbon::parse($member->membership_validity)->format('F d, Y') : 'N/A';
+
+        return view('customers.qr', [
+            'qrCode' => $qrCode,
+            'membershipValidity' => $membershipValidity,
+        ]);
     }
 
     public function settings(){

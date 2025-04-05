@@ -121,7 +121,7 @@ class TransactionController extends Controller
             $rate_identity->save();
         }
 
-        return redirect()->route('transactions.index')->with('success', 'Transaction approved.');
+        return redirect()->route('admin.payments')->with('success', 'Transaction approved.');
     }
 
     // Cancel a transaction
@@ -131,13 +131,13 @@ class TransactionController extends Controller
             'status' => 'canceled',
         ]);
 
-        return redirect()->route('transactions.index')->with('success', 'Transaction canceled.');
+        return redirect()->route('admin.payments')->with('success', 'Transaction canceled.');
     }
 
     public function index()
     {
         $transactions = Transaction::with(['member.user', 'rate'])
-            ->where('status', '!=', 'Pending')
+            ->where('status', 'approved')
             ->get();
     
         // Add user details (if any) to the transactions
@@ -151,7 +151,7 @@ class TransactionController extends Controller
                 $transaction->user_name = $transaction->member->customer_name;
                 $transaction->user_email = 'No Email';
             } else {
-                $transaction->user_name = 'No Member';
+                $transaction->user_name = 'No User';
                 $transaction->user_email = 'No Email';
             }
         });

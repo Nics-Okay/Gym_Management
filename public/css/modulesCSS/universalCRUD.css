@@ -1,0 +1,74 @@
+.universal-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.universal-div-main {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 40%;
+    border-radius: 15px;
+    border: 1px solid rgb(0, 0, 0, 0.4);
+    box-shadow: 0 4px 7px rgb(0, 0, 0, 0.4);
+    background-color: white;
+}
+
+.universal-div-header {
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.universal-div-content {
+    width: 70%;
+
+}
+
+.label {
+    margin: 0;
+    padding: 0;
+}
+
+.label label {
+    font-size: 14px;
+}
+
+.label input {
+    box-sizing: border-box;
+    height: 30px;
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 0;
+    border: none; /* Remove all borders */
+    border-bottom: 1px solid #000000a9; /* Add a bottom border */
+    outline: none; /* Remove the focus outline */
+    padding: 5px 0; /* Optional: Add padding for spacing */
+    width: 100%; /* Optional: Set width */
+    font-size: 16px; /* Optional: Adjust text size */
+}
+
+input {
+    padding-left: 5px;
+}
+
+.submit-button {
+    margin-top: 50px;
+    justify-self: center;
+}
+
+.submit-button input {
+    font-size: 18px;
+    height: 35px;
+    width: 120px;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgb(0, 0, 0, 0.5);
+    background-color: rgb(212, 161, 29);
+}

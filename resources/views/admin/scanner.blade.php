@@ -2,6 +2,7 @@
 
 @section('head-access')
     <link rel="stylesheet" href="{{ asset('css/modulesCSS/qrScannerStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modulesCSS/tableStyle.css') }}">
     <script src="https://unpkg.com/html5-qrcode/html5-qrcode.min.js"></script>
 @endsection
 
@@ -28,9 +29,7 @@
                     let isScanning = true;
 
                     function onScanSuccess(decodedText, decodedResult) {
-                        if (!isScanning) return; // Prevent further scans during the delay
-
-                        // Disable further scans
+                        if (!isScanning) return;
                         isScanning = false;
 
                         // Automatically populate the hidden input with the scanned QR code
@@ -93,34 +92,46 @@
             </div>
         </div>
 
-        <div class="scan-record">
-            <p style="color: black;">DAILY MEMBER LOGS</p>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Membership Status</th>
-                        <th>Membership Validity</th>
-                        <th>Access Type</th>
-                        <th>Time In</th>
-                        <th>Time Out</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($scans as $scan)
-                    <tr style="{{ now()->greaterThan($scan->membership_validity) || $scan->access_type !== 'Allowed' ? 'color:rgb(196, 0, 0);' : '' }}">
-                            <td>{{ $scan->id }}</td>
-                            <td>{{ $scan->name }}</td>
-                            <td>{{ $scan->membership_status }}</td>
-                            <td>{{ $scan->membership_validity }}</td>
-                            <td>{{ $scan->access_type }}</td>
-                            <td>{{ $scan->time_in }}</td>
-                            <td>{{ $scan->time_out }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+
+        <div class="scanner-section">
+            <div class="table-main">
+                <div class="scanner-table-header">
+                    <h3 class="table-header-info">DAILY MEMBER LOGS</h3>
+                </div>
+            </div>
+            <div class="table-main">
+                <div class="table-container">
+                    <div class="table-container-header">
+                        <h5 class="table-container-header-info"></h5>
+                    </div>
+                    <table class="table-scanner">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Membership Status</th>
+                                <th>Membership Validity</th>
+                                <th>Access Type</th>
+                                <th>Time In</th>
+                                <th>Time Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($attendees as $attendee)
+                            <tr style="{{ now()->greaterThan($attendee->membership_validity) || $attendee->access_type !== 'Allowed' ? 'color:rgb(196, 0, 0);' : '' }}">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $attendee->name }}</td>
+                                    <td>{{ $attendee->membership_status }}</td>
+                                    <td>{{ $attendee->membership_validity }}</td>
+                                    <td>{{ $attendee->access_type }}</td>
+                                    <td>{{ $attendee->time_in }}</td>
+                                    <td>{{ $attendee->time_out }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <div class="dashboard-sidebar">

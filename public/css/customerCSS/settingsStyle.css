@@ -2,8 +2,6 @@
     align-content: center;
     box-sizing: border-box;
     height: 34%;
-    background-color: forestgreen;
-
 }
 
 .customer-settings {
@@ -63,7 +61,6 @@
 .settings-menu-2 {
     box-sizing: border-box;
     height: 59%;
-    background-color: crimson;
 }
 
 .settings-menu-2 h2 {
